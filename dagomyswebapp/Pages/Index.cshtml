@@ -1,0 +1,235 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="form-container">
+    <h1>Анкета студента</h1>
+
+    <form method="post" class="form-group">
+        <p><input type="text" name="First_Name" placeholder="Введите имя" required></p>
+        <p><input type="text" name="Middle_Name" placeholder="Введите фамилию" required></p>
+        <p><input type="text" name="Last_Name" placeholder="Введите отчество (необязательно)"></p>
+        <p><input type="tel" name="Phone" placeholder="Введите номер телефона" required></p>
+        <p><input type="email" name="Email" placeholder="Введите адрес электронной почты"></p>
+
+        <p>
+            <label>Дата рождения:</label><br>
+            <input type="date" name="BirthDate">
+        </p>
+
+        <p>
+            <label>Город:</label><br>
+            <select name="City" class="form-select">
+                <option value="">— выберите город —</option>
+                <option value="Москва">Москва</option>
+                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                <option value="Новосибирск">Новосибирск</option>
+                <option value="Екатеринбург">Екатеринбург</option>
+                <option value="Казань">Казань</option>
+                <option value="Сочи">Сочи</option>
+            </select>
+        </p>
+
+        <p class="speciality">
+            <label>Специальность:</label><br>
+            <input type="radio" name="Speciality" value="Программист" id="krut">
+            <label for="krut">Программист</label>
+            <input type="radio" name="Speciality" value="Дизайнер" id="klas">
+            <label for="klas">Дизайнер</label>
+            <input type="radio" name="Speciality" value="Учитель" id="zam">
+            <label for="zam">Учитель</label>
+        </p>
+
+        <p class="speciality">
+            <label>Формат обучения:</label><br>
+            <input type="radio" name="StudyFormat" value="Очно" id="fulltime">
+            <label for="fulltime">Очно</label>
+            <input type="radio" name="StudyFormat" value="Заочно" id="parttime">
+            <label for="parttime">Заочно</label>
+            <input type="radio" name="StudyFormat" value="Дистанционное" id="remote">
+            <label for="remote">Дистанционное</label>
+        </p>
+
+        <p class="speciality">
+            <label>Языки программирования (можно несколько):</label><br>
+            <input type="checkbox" name="Languages" value="C#" id="csharp">
+            <label for="csharp">C#</label>
+            <input type="checkbox" name="Languages" value="Python" id="python">
+            <label for="python">Python</label>
+            <input type="checkbox" name="Languages" value="JavaScript" id="js">
+            <label for="js">JavaScript</label>
+            <input type="checkbox" name="Languages" value="Java" id="java">
+            <label for="java">Java</label>
+            <input type="checkbox" name="Languages" value="C++" id="cpp">
+            <label for="cpp">C++</label>
+            <input type="checkbox" name="Languages" value="Go" id="go">
+            <label for="go">Go</label>
+            <input type="checkbox" name="Languages" value="Rust" id="rust">
+            <label for="rust">Rust</label>
+        </p>
+
+        <p>
+            <label>Основной язык программирования:</label><br>
+            <select name="MainLanguage" class="form-select">
+                <option value="">— выберите основной язык —</option>
+                <option value="C#">C#</option>
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+                <option value="Go">Go</option>
+                <option value="Rust">Rust</option>
+            </select>
+        </p>
+
+        <p>
+            <label>Технологии, с которыми работали:</label><br>
+            <input type="checkbox" name="Technologies" value="ASP.NET Core" id="aspnet">
+            <label for="aspnet">ASP.NET Core</label>
+            <input type="checkbox" name="Technologies" value="Entity Framework" id="ef">
+            <label for="ef">Entity Framework</label>
+            <input type="checkbox" name="Technologies" value="React" id="react">
+            <label for="react">React</label>
+            <input type="checkbox" name="Technologies" value="Vue" id="vue">
+            <label for="vue">Vue</label>
+            <input type="checkbox" name="Technologies" value="Docker" id="docker">
+            <label for="docker">Docker</label>
+            <input type="checkbox" name="Technologies" value="Git" id="git">
+            <label for="git">Git</label>
+            <input type="checkbox" name="Technologies" value="SQL" id="sql">
+            <label for="sql">SQL</label>
+            <input type="checkbox" name="Technologies" value="Linux" id="linux">
+            <label for="linux">Linux</label>
+        </p>
+
+        <p>
+            <label>О себе:</label><br>
+            <textarea name="About" rows="4" placeholder="Расскажите немного о себе..." class="form-textarea"></textarea>
+        </p>
+
+        <button class="form-button" type="submit">Отправить</button>
+        <button class="clear-button" type="reset">Очистить</button>
+    </form>
+
+    <div id="status" class="status"></div>
+    <div class="student-card" id="result">
+            <div class="info-item">
+                <span>Имя</span>
+                <strong id="result-first-name"></strong>
+            </div>
+            <div class="info-item">
+                <span>Фамилия</span>
+                <strong id="result-middle-name"></strong>
+            </div>
+            <div class="info-item">
+                <span>Отчество</span>
+                <strong id="result-last-name"></strong>
+            </div>
+            <div class="info-item">
+                <span>Телефон</span>
+                <strong id="result-phone"></strong>
+            </div>
+            <div class="info-item">
+                <span>Email</span>
+                <strong id="result-email"></strong>
+            </div>
+            <div class="info-item">
+                <span>Город</span>
+                <strong id="result-city"></strong> 
+            </div> 
+
+            <div class="info-item">
+                <span>Специальность</span>
+            <strong id="result-speciality"></strong>
+            </div>
+            <div class="info-item">
+                <span>Языки программирования</span>
+                <strong id="result-languages"></strong>
+            </div>
+            <div class="info-item">
+                <span>Основной язык</span>
+                <strong id="result-mainLanguage"></strong>
+            </div>
+            <div class="info-item">
+                <span>Формат обучения</span>
+                <strong id="result-studyFormat"></strong>
+            </div>
+            <div class="info-item">
+                <span>Дата рождения</span>
+                <strong id="result-birthDate"></strong>
+            </div>
+            <div class="info-item">
+                <span>Технологии</span>
+                <strong id="result-technologies"></strong>
+            </div>
+            <div class="info-item">
+                <span>О себе</span>
+                <strong id="result-about"></strong>
+            </div>
+            <div class="students-section">
+                <h2>Список студентов</h2>
+                <div id="students-list"></div>
+            </div>
+    </div>
+
+    @* @if (Model.Message != null) {
+        <div class="result">
+            <p style="white-space: pre-line;">@Model.Message</p>
+        </div>
+    } *@
+</div>
+
+<script>
+    const form = document.querySelector("form");
+    const button = form.querySelector("button[type='submit']");
+    const status = document.querySelector("#status")
+    const studentList = document.querySelector("#student-list")
+   form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      
+      button.disabled = true;
+      button.textContent = "Отправка...";
+        const formData = new FormData(form);
+      
+    
+        try {
+        const response = await fetch("",{
+         method: "POST",
+         body: formData
+        });
+        const data = await response.json();
+       
+        document.querySelector("#result-first-name").textContent = data.First_Name
+        document.querySelector("#result-middle-name").textContent = data.Middle_Name
+        document.querySelector("#result-last-name").textContent = data.Last_Name
+        document.querySelector("#result-phone").textContent = data.Phone
+        document.querySelector("#result-email").textContent = data.Email
+        document.querySelector("#result-city").textContent = data.City
+        document.querySelector("#result-speciality").textContent = data.Speciality
+        document.querySelector("#result-languages").textContent = data.Languages
+        document.querySelector("#result-mainLanguage").textContent = data.MainLanguage
+        document.querySelector("#result-studyFormat").textContent = data.StudyFormat
+        document.querySelector("#result-birthDate").textContent = data.BirthDate
+        document.querySelector("#result-technologies").textContent = data.Technologies
+        document.querySelector("#result-about").textContent = data.About
+
+
+        console.log(data);
+
+        document.querySelector("#result").style.display = "block";
+        button.textContent = "Анкета отправлена";
+      } catch(error) {
+        button.textContent = "Анкета не отправлена";
+      } finally {
+        button.textContent = "Отправить"
+         button.disabled = false;
+      }
+   });
+
+   form.addEventListener("reset", function() {
+    document.querySelector("#result").style.display = "none";
+    document.querySelector("#status").textContent = "";
+   })
+</script>
