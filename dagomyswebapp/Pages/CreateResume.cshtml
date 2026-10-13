@@ -1,0 +1,440 @@
+@page
+@model CreateResumeModel
+@{
+    ViewData["Title"] = "Создание резюме";
+}
+
+<div class="form-container">
+
+    <h1>Анкета студента</h1>
+
+    <p class="description">
+        Введите свои данные
+    </p>
+
+    <form method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>Имя:</label>
+            <input type="text" name="First_Name" placeholder="Введите имя" required>
+        </div>
+
+        <div class="form-group">
+            <label>Фамилия:</label>
+            <input type="text" name="Middle_Name" placeholder="Введите фамилию" required>
+        </div>
+
+        <div class="form-group">
+            <label>Отчество (необязательно):</label>
+            <input type="text" name="Last_Name" placeholder="Введите отчество">
+        </div>
+
+        <div class="form-group">
+            <label>Номер телефона:</label>
+            <input type="tel" name="Phone" placeholder="+7" required>
+        </div>
+
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" name="Email" placeholder="email@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label>Дата рождения:</label>
+            <input type="date" name="BirthDate">
+        </div>
+
+        <div class="form-group">
+            <label>Город:</label>
+            <select name="City" class="form-select">
+                <option value="">— выберите город —</option>
+                <option value="Москва">Москва</option>
+                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                <option value="Новосибирск">Новосибирск</option>
+                <option value="Екатеринбург">Екатеринбург</option>
+                <option value="Казань">Казань</option>
+                <option value="Сочи">Сочи</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Специальность:</label>
+            <div class="speciality">
+                <input type="radio" name="Speciality" value="Программист" id="krut">
+                <label for="krut">Программист</label>
+                <br>
+                <input type="radio" name="Speciality" value="Дизайнер" id="klas">
+                <label for="klas">Дизайнер</label>
+                <br>
+                <input type="radio" name="Speciality" value="Учитель" id="zam">
+                <label for="zam">Учитель</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Формат обучения:</label>
+            <div class="speciality">
+                <input type="radio" name="StudyFormat" value="Очно" id="fulltime">
+                <label for="fulltime">Очно</label>
+                <br>
+                <input type="radio" name="StudyFormat" value="Заочно" id="parttime">
+                <label for="parttime">Заочно</label>
+                <br>
+                <input type="radio" name="StudyFormat" value="Дистанционное" id="remote">
+                <label for="remote">Дистанционное</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Языки программирования:</label>
+            <div class="speciality">
+                <input type="checkbox" name="Languages" value="C#" id="csharp">
+                <label for="csharp">C#</label>
+                <br>
+                <input type="checkbox" name="Languages" value="Python" id="python">
+                <label for="python">Python</label>
+                <br>
+                <input type="checkbox" name="Languages" value="JavaScript" id="js">
+                <label for="js">JavaScript</label>
+                <br>
+                <input type="checkbox" name="Languages" value="Java" id="java">
+                <label for="java">Java</label>
+                <br>
+                <input type="checkbox" name="Languages" value="C++" id="cpp">
+                <label for="cpp">C++</label>
+                <br>
+                <input type="checkbox" name="Languages" value="Go" id="go">
+                <label for="go">Go</label>
+                <br>
+                <input type="checkbox" name="Languages" value="Rust" id="rust">
+                <label for="rust">Rust</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Основной язык программирования:</label>
+            <select name="MainLanguage" class="form-select">
+                <option value="">— выберите основной язык —</option>
+                <option value="C#">C#</option>
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+                <option value="Go">Go</option>
+                <option value="Rust">Rust</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Технологии, с которыми работали:</label>
+            <div class="speciality">
+                <input type="checkbox" name="Technologies" value="ASP.NET Core" id="aspnet">
+                <label for="aspnet">ASP.NET Core</label>
+                <br>
+                <input type="checkbox" name="Technologies" value="Entity Framework" id="ef">
+                <label for="ef">Entity Framework</label>
+                <br>
+                <input type="checkbox" name="Technologies" value="React" id="react">
+                <label for="react">React</label>
+                <br>
+                <input type="checkbox" name="Technologies" value="Vue" id="vue">
+                <label for="vue">Vue</label>
+                <br>
+                <input type="checkbox" name="Technologies" value="Docker" id="docker">
+                <label for="docker">Docker</label>
+                <br>
+                <input type="checkbox" name="Technologies" value="Git" id="git">
+                <label for="git">Git</label>
+                <br>
+                <input type="checkbox" name="Technologies" value="SQL" id="sql">
+                <label for="sql">SQL</label>
+                <br>
+                <input type="checkbox" name="Technologies" value="Linux" id="linux">
+                <label for="linux">Linux</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>О себе:</label>
+            <textarea name="About" rows="4" placeholder="Расскажите немного о себе..." class="form-textarea"></textarea>
+        </div>
+
+        <button class="form-button" type="submit">Отправить</button>
+        <button class="clear-button" type="reset">Очистить</button>
+    </form>
+
+    <div id="status" class="status"></div>
+
+    @* КАРТОЧКА ПОСЛЕДНЕГО ДОБАВЛЕННОГО СТУДЕНТА *@
+    <div id="result" class="student-card" style="display: none;">
+        <div class="student-card-header">
+            <h2>Анкета отправлена</h2>
+            <p>Данные студента</p>
+        </div>
+
+        <div class="student-info">
+            <div class="info-item">
+                <span>Имя</span>
+                <strong id="result-first-name"></strong>
+            </div>
+            <div class="info-item">
+                <span>Фамилия</span>
+                <strong id="result-middle-name"></strong>
+            </div>
+            <div class="info-item">
+                <span>Отчество</span>
+                <strong id="result-last-name"></strong>
+            </div>
+            <div class="info-item">
+                <span>Телефон</span>
+                <strong id="result-phone"></strong>
+            </div>
+            <div class="info-item">
+                <span>Email</span>
+                <strong id="result-email"></strong>
+            </div>
+            <div class="info-item">
+                <span>Город</span>
+                <strong id="result-city"></strong>
+            </div>
+            <div class="info-item">
+                <span>Специальность</span>
+                <strong id="result-speciality"></strong>
+            </div>
+            <div class="info-item">
+                <span>Формат обучения</span>
+                <strong id="result-study-format"></strong>
+            </div>
+            <div class="info-item">
+                <span>Дата рождения</span>
+                <strong id="result-birth-date"></strong>
+            </div>
+            <div class="info-item">
+                <span>Языки программирования</span>
+                <strong id="result-languages"></strong>
+            </div>
+            <div class="info-item">
+                <span>Основной язык</span>
+                <strong id="result-main-language"></strong>
+            </div>
+            <div class="info-item">
+                <span>Технологии</span>
+                <strong id="result-technologies"></strong>
+            </div>
+            <div class="info-item">
+                <span>О себе</span>
+                <strong id="result-about"></strong>
+            </div>
+        </div>
+    </div>
+
+    @* СПИСОК ВСЕХ СТУДЕНТОВ *@
+    <div class="students-section">
+        <h2>Список студентов</h2>
+        <div id="students-list"></div>
+    </div>
+</div>
+
+<script>
+    const form = document.querySelector("form");
+    const button = form.querySelector("button[type='submit']");
+    const status = document.querySelector("#status");
+    const studentsList = document.querySelector("#students-list");
+
+    // Вспомогательные функции форматирования
+    function formatArray(arr) {
+        if (!arr) return "-";
+        if (Array.isArray(arr)) {
+            return arr.length > 0 ? arr.join(", ") : "-";
+        }
+        return arr;
+    }
+
+    function formatDate(dateValue) {
+        if (!dateValue) return "-";
+        const d = new Date(dateValue);
+        return isNaN(d) ? dateValue : d.toLocaleDateString("ru-RU");
+    }
+
+    // ОТПРАВКА ФОРМЫ ЧЕРЕЗ AJAX
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        button.textContent = "Отправка...";
+        button.disabled = true;
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch("", {
+                method: "POST",
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error("Ошибка сервера");
+            }
+
+            const data = await response.json();
+
+            // Заполняем данные карточки последнего добавленного студента
+            document.querySelector("#result-first-name").textContent = data.first_Name || data.First_Name || "-";
+            document.querySelector("#result-middle-name").textContent = data.middle_Name || data.Middle_Name || "-";
+            document.querySelector("#result-last-name").textContent = data.last_Name || data.Last_Name || "-";
+            document.querySelector("#result-phone").textContent = data.phone || data.Phone || "-";
+            document.querySelector("#result-email").textContent = data.email || data.Email || "-";
+            document.querySelector("#result-city").textContent = data.city || data.City || "-";
+            document.querySelector("#result-speciality").textContent = data.speciality || data.Speciality || "-";
+            document.querySelector("#result-study-format").textContent = data.studyFormat || data.StudyFormat || "-";
+            document.querySelector("#result-birth-date").textContent = formatDate(data.birthDate || data.BirthDate);
+            document.querySelector("#result-languages").textContent = formatArray(data.languages || data.Languages);
+            document.querySelector("#result-main-language").textContent = data.mainLanguage || data.MainLanguage || "-";
+            document.querySelector("#result-technologies").textContent = formatArray(data.technologies || data.Technologies);
+            document.querySelector("#result-about").textContent = data.about || data.About || "-";
+
+            document.querySelector("#result").style.display = "block";
+            status.textContent = "Анкета успешно отправлена";
+
+            // Обновляем список студентов и очищаем форму
+            await loadStudents();
+            form.reset();
+        } catch (error) {
+            console.error(error);
+            status.textContent = "Не удалось отправить анкету";
+        } finally {
+            button.disabled = false;
+            button.textContent = "Отправить";
+        }
+    });
+
+    // ПОЛУЧЕНИЕ И ОТРИСОВКА СПИСКА ВСЕХ СТУДЕНТОВ
+    async function loadStudents() {
+        try {
+            const response = await fetch("?handler=Students");
+
+            if (!response.ok) {
+                throw new Error("Ошибка загрузки студентов");
+            }
+
+            const students = await response.json();
+            studentsList.innerHTML = "";
+
+            if (!students || students.length === 0) {
+                studentsList.innerHTML = "<p>Список студентов пуст</p>";
+                return;
+            }
+
+            students.forEach(student => {
+                const card = document.createElement("div");
+                card.className = "student-card";
+
+                const fullName = [
+                    student.middle_Name || student.Middle_Name,
+                    student.first_Name || student.First_Name,
+                    student.last_Name || student.Last_Name
+                ].filter(Boolean).join(" ");
+
+                const id = student.id !== undefined ? student.id : student.Id;
+
+                card.innerHTML = `
+                    <div class="student-card-header">
+                        <div>
+                            <h2>${fullName}</h2>
+                            <p>${student.speciality || student.Speciality || "-"}</p>
+                        </div>
+                    </div>
+                    <div class="student-info">
+                        <div class="info-item">
+                            <span>Телефон:</span>
+                            <strong>${student.phone || student.Phone || "-"}</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Email:</span>
+                            <strong>${student.email || student.Email || "-"}</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Город:</span>
+                            <strong>${student.city || student.City || "-"}</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Формат обучения:</span>
+                            <strong>${student.studyFormat || student.StudyFormat || "-"}</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Дата рождения:</span>
+                            <strong>${formatDate(student.birthDate || student.BirthDate)}</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Языки:</span>
+                            <strong>${formatArray(student.languages || student.Languages)}</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Основной язык:</span>
+                            <strong>${student.mainLanguage || student.MainLanguage || "-"}</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Технологии:</span>
+                            <strong>${formatArray(student.technologies || student.Technologies)}</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>О себе:</span>
+                            <strong>${student.about || student.About || "-"}</strong>
+                        </div>
+                    </div>
+                    <button class="delete-button" onclick="deleteStudent(${id})">
+                        Удалить
+                    </button>
+                `;
+
+                studentsList.appendChild(card);
+            });
+        } catch (error) {
+            console.error(error);
+            studentsList.innerHTML = `
+                <div class="result">
+                    Не удалось загрузить список студентов
+                </div>
+            `;
+        }
+    }
+
+    // УДАЛЕНИЕ АНКЕТЫ СТУДЕНТА
+    async function deleteStudent(id) {
+        try {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            const response = await fetch("?handler=Delete&id=" + id, {
+                method: "POST",
+                headers: {
+                    "RequestVerificationToken": token
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Ошибка удаления");
+            }
+
+            const result = await response.json();
+
+            if (result.success) {
+                status.textContent = "Анкета студента удалена";
+                await loadStudents();
+            } else {
+                status.textContent = result.message || "Ошибка при удалении";
+            }
+        } catch (error) {
+            console.error(error);
+            status.textContent = "Не удалось удалить анкету студента";
+        }
+    }
+
+    // ОЧИСТКА ФОРМЫ
+    form.addEventListener("reset", function () {
+        document.querySelector('#result').style.display = 'none';
+        document.querySelector('#status').textContent = '';
+    });
+
+    // ПЕРВИЧНАЯ ЗАГРУЗКА
+    loadStudents();
+</script>
