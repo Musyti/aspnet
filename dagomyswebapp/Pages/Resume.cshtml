@@ -1,0 +1,83 @@
+@page
+@model ResumeModel
+
+<div class="resume-detail-page">
+    <article class="resume-detail-card">
+        <h1>@Model.Resume.First_Name @Model.Resume.Middle_Name @Model.Resume.Last_Name </h1>
+        <p class="resume-speciality">@Model.Resume.Speciality</p>
+        
+        <section class="resume-detail-section">
+            <h2>Основная информация</h2>
+            <p>
+                <strong>Email:</strong>
+                @Model.Resume.Email
+            </p>
+            <p>
+                <strong>Телефон:</strong>
+                @Model.Resume.Phone
+            </p>
+            <p>
+                <strong>Дата рождения:</strong>
+                @(string.IsNullOrWhiteSpace(Model.Resume.BirthDate.ToString())
+                ? "Не указана" : Model.Resume.BirthDate?.ToString("dd.MM.yyyy"))
+            </p>
+            <p>
+                <strong>Город:</strong>
+                @(string.IsNullOrWhiteSpace(Model.Resume.City) ? "Не указан" : Model.Resume.City)
+            </p>
+            <p>
+                <strong>Формат обучения:</strong>
+                @(string.IsNullOrWhiteSpace(Model.Resume.StudyFormat) ? "Не указан" : Model.Resume.StudyFormat)
+            </p>
+        </section>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Resume.About))
+        {
+            <section class="resume-detail-section">
+                <h2>О себе</h2>
+                <p>@Model.Resume.About</p>
+            </section>
+        }
+
+        <section class="resume-detail-section">
+            <h2>Технологии и навыки</h2>
+            @if (Model.Resume.Technologies.Count() > 0)
+            {
+                <div class="resume-skills">
+                    @foreach (var technology in Model.Resume.Technologies)
+                    {
+                        <span class="resume-skill">
+                            @technology
+                        </span>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>Навыки не указаны</p>
+            }
+        </section>
+
+        <section class="resume-detail-section">
+            <h2>Языки</h2>
+            <p>
+                <strong>Основной язык:</strong> 
+                @(string.IsNullOrWhiteSpace(Model.Resume.MainLanguage) ? "Не указан" : Model.Resume.MainLanguage)
+            </p>
+            @if (Model.Resume.Languages.Count() > 0)
+            {
+                <p><strong>Другие языки:</strong></p>
+                <div class="resume-skills">
+                    @foreach (var language in Model.Resume.Languages)
+                    {
+                        <span class="resume-skill">
+                            @language
+                        </span>
+                    }
+                </div>
+            }
+        </section>
+
+        <a class="home-button" asp-page="/Resumes">Вернуться к каталогу резюме</a>
+    </article>
+</div>

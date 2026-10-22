@@ -192,4 +192,4 @@ D:\aspnet\dagomyswebapp\obj\Debug\net10.0\refint\dagomyswebapp.dll
 D:\aspnet\dagomyswebapp\obj\Debug\net10.0\dagomyswebapp.pdb
 D:\aspnet\dagomyswebapp\obj\Debug\net10.0\dagomyswebapp.genruntimeconfig.cache
 D:\aspnet\dagomyswebapp\obj\Debug\net10.0\ref\dagomyswebapp.dll
-D:\aspnet\dagomyswebapp\obj\Debug\net10.0\compressed\uz6m4z9een-{0}-eec7ccy7b3-eec7ccy7b3.gz
+D:\aspnet\dagomyswebapp\obj\Debug\net10.0\compressed\uz6m4z9een-{0}-v5xvyhizt4-v5xvyhizt4.gz
