@@ -7,6 +7,8 @@ namespace dagomyswebapp.Pages;
 public class ResumeModel : PageModel
 {
     public Student? Resume { get; set; }
+    
+
     public IActionResult OnGet(int id)
     {
         Resume = CreateResumeModel.Students

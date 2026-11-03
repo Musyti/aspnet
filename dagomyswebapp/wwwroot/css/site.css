@@ -743,3 +743,114 @@ body {
     font-size: 24px;
   }
 }
+
+/* Панель поиска резюме */
+.resume-search-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 20px;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  margin-bottom: 25px;
+}
+
+.search-field {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-field label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.search-field input[type="text"],
+.search-field select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: inherit;
+  background: #fff;
+  color: #222;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.search-field input[type="text"]:focus,
+.search-field select:focus {
+  outline: none;
+  border-color: #008955;
+  box-shadow: 0 0 0 3px rgba(0, 137, 85, 0.15);
+}
+
+.search-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-actions .home-button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.search-reset {
+  display: inline-block;
+  padding: 11px 22px;
+  border-radius: 10px;
+  background: transparent;
+  color: #666;
+  border: 2px solid #e0e0e0;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.search-reset:hover {
+  border-color: #b63a40;
+  color: #b63a40;
+  background: rgba(182, 58, 64, 0.05);
+}
+
+@media (max-width: 600px) {
+  .resume-search-form {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+
+  .search-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-actions .home-button,
+  .search-reset {
+    width: 100%;
+    text-align: center;
+  }
+}
