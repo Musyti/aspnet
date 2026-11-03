@@ -1,70 +1,121 @@
 @page "/EditResume/{id:int}"
-@model EditResumeModel
+@model dagomyswebapp.Pages.EditResumeModel
+@{
+    ViewData["Title"] = "Редактирование резюме";
+}
 
-<div class="resume-detail-page">
-    <a class='resume-back-link' href="/Resumes" asp-route-id="@Model.Resume.id">Назад к резюме</a>
+<div class="form-container">
+    <a class="resume-back-link" asp-page="/Resumes" asp-route-id="@Model.Resume.id">Назад к резюме</a>
 
-    <div class="resume-detail-card">
-        <h1 class="resume-detail-title">Редактирование резюме</h1>
-        <p>Измени информацию и сохраните новые данные</p>
+    <h1>Редактирование резюме</h1>
+    <p class="description">
+        Измените информацию и сохраните новые данные
+    </p>
 
-        <form method="post">
-            <input type="hidden" asp-for="Resume.id" />
-            <div class="form-group">
-                <label asp-for="Resume.First_Name"></label>
-                <input asp-for="Resume.First_Name" class="form-control" />
+    <form method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Resume.id" />
+
+        <div class="form-group">
+            <label asp-for="Resume.First_Name">Имя:</label>
+            <input type="text" asp-for="Resume.First_Name" placeholder="Введите имя" required />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Resume.Middle_Name">Фамилия:</label>
+            <input type="text" asp-for="Resume.Middle_Name" placeholder="Введите фамилию" required />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Resume.Last_Name">Отчество (необязательно):</label>
+            <input type="text" asp-for="Resume.Last_Name" placeholder="Введите отчество" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Resume.Phone">Номер телефона:</label>
+            <input type="tel" asp-for="Resume.Phone" placeholder="+7" required />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Resume.Email">Email:</label>
+            <input type="email" asp-for="Resume.Email" placeholder="email@example.com" required />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Resume.BirthDate">Дата рождения:</label>
+            <input type="date" asp-for="Resume.BirthDate" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Resume.City">Город:</label>
+            <select asp-for="Resume.City" class="form-select">
+                <option value="">— выберите город —</option>
+                <option value="Москва">Москва</option>
+                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                <option value="Новосибирск">Новосибирск</option>
+                <option value="Екатеринбург">Екатеринбург</option>
+                <option value="Казань">Казань</option>
+                <option value="Сочи">Сочи</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Специальность:</label>
+            <div class="speciality">
+                <input type="radio" asp-for="Resume.Speciality" value="Программист" id="krut" />
+                <label for="krut">Программист</label>
+                <br />
+                <input type="radio" asp-for="Resume.Speciality" value="Дизайнер" id="klas" />
+                <label for="klas">Дизайнер</label>
+                <br />
+                <input type="radio" asp-for="Resume.Speciality" value="Учитель" id="zam" />
+                <label for="zam">Учитель</label>
             </div>
-            <div class="form-group">
-                <label asp-for="Resume.Middle_Name"></label>
-                <input asp-for="Resume.Middle_Name" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Формат обучения:</label>
+            <div class="speciality">
+                <input type="radio" asp-for="Resume.StudyFormat" value="Очно" id="fulltime" />
+                <label for="fulltime">Очно</label>
+                <br />
+                <input type="radio" asp-for="Resume.StudyFormat" value="Заочно" id="parttime" />
+                <label for="parttime">Заочно</label>
+                <br />
+                <input type="radio" asp-for="Resume.StudyFormat" value="Дистанционное" id="remote" />
+                <label for="remote">Дистанционное</label>
             </div>
-            <div class="form-group">
-                <label asp-for="Resume.Last_Name"></label>
-                <input asp-for="Resume.Last_Name" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Языки программирования:</label>
+            <div class="speciality">
+                <input type="checkbox" name="Resume.Languages" value="C#" id="csharp" checked="@(Model.Resume.Languages?.Contains("C#") == true)" />
+                <label for="csharp">C#</label>
+                <br />
+                <input type="checkbox" name="Resume.Languages" value="Python" id="python" checked="@(Model.Resume.Languages?.Contains("Python") == true)" />
+                <label for="python">Python</label>
+                <br />
+                <input type="checkbox" name="Resume.Languages" value="JavaScript" id="js" checked="@(Model.Resume.Languages?.Contains("JavaScript") == true)" />
+                <label for="js">JavaScript</label>
+                <br />
+                <input type="checkbox" name="Resume.Languages" value="Java" id="java" checked="@(Model.Resume.Languages?.Contains("Java") == true)" />
+                <label for="java">Java</label>
+                <br />
+                <input type="checkbox" name="Resume.Languages" value="C++" id="cpp" checked="@(Model.Resume.Languages?.Contains("C++") == true)" />
+                <label for="cpp">C++</label>
+                <br />
+                <input type="checkbox" name="Resume.Languages" value="Go" id="go" checked="@(Model.Resume.Languages?.Contains("Go") == true)" />
+                <label for="go">Go</label>
+                <br />
+                <input type="checkbox" name="Resume.Languages" value="Rust" id="rust" checked="@(Model.Resume.Languages?.Contains("Rust") == true)" />
+                <label for="rust">Rust</label>
             </div>
-            <div class="form-group">
-                <label asp-for="Resume.Phone"></label>
-                <input asp-for="Resume.Phone" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Resume.Email"></label>
-                <input asp-for="Resume.Email" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Resume.BirthDate"></label>
-                <input asp-for="Resume.BirthDate" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Resume.City"></label>
-                <select asp-for("Resume.City") class("form-control")>
-                    <option value="">— выберите город —</option>
-                    <option value="Москва">Москва</option>
-                    <option value="Санкт-Петербург">Санкт-Петербург</option>
-                    <option value="Новосибирск">Новосибирск</option>
-                    <option value="Екатеринбург">Екатеринбург</option>
-                    <option value="Казань">Казань</option>
-                    <option value="Сочи">Сочи</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Resume.Speciality"></label>
-                <input asp-for="Resume.Speciality" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for("Resume.StudyFormat")></label>
-                <select asp-for("Resume.StudyFormat") class("form-control")>
-                    <option value="">Выберите формат обучения</option>
-                    <option value("FullTime")>Очное</option>
-                    <option value("PartTime")>Заочное</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for("Resume.Languages")></label>
-                <input asp-for("Resume.Languages") class("form-control") />
-            </div>
-            <div class "form-group">
-                <label asp-for("Resume.MainLanguage")></label>
-                <select asp-for("Resume.MainLanguage") class("form-control")>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Resume.MainLanguage">Основной язык программирования:</label>
+            <select asp-for="Resume.MainLanguage" class="form-select">
                 <option value="">— выберите основной язык —</option>
                 <option value="C#">C#</option>
                 <option value="Python">Python</option>
@@ -73,18 +124,43 @@
                 <option value="C++">C++</option>
                 <option value="Go">Go</option>
                 <option value="Rust">Rust</option>
-                </select>
-            </div>
-            <div class "form-group">
-                <label asp-for("Resume.Technologies")></label>
-                <input asp-for("Resume.Technologies") class("form-control")/>
-            </div>
-            <div class "form-group">
-                <label asp-for("Resume.About")></label>
-                <textarea asp-for("Resume.About") class("form-control")></textarea>
-            </div>
+            </select>
+        </div>
 
-        </form>
+        <div class="form-group">
+            <label>Технологии, с которыми работали:</label>
+            <div class="speciality">
+                <input type="checkbox" name="Resume.Technologies" value="ASP.NET Core" id="aspnet" checked="@(Model.Resume.Technologies?.Contains("ASP.NET Core") == true)" />
+                <label for="aspnet">ASP.NET Core</label>
+                <br />
+                <input type="checkbox" name="Resume.Technologies" value="Entity Framework" id="ef" checked="@(Model.Resume.Technologies?.Contains("Entity Framework") == true)" />
+                <label for="ef">Entity Framework</label>
+                <br />
+                <input type="checkbox" name="Resume.Technologies" value="React" id="react" checked="@(Model.Resume.Technologies?.Contains("React") == true)" />
+                <label for="react">React</label>
+                <br />
+                <input type="checkbox" name="Resume.Technologies" value="Vue" id="vue" checked="@(Model.Resume.Technologies?.Contains("Vue") == true)" />
+                <label for="vue">Vue</label>
+                <br />
+                <input type="checkbox" name="Resume.Technologies" value="Docker" id="docker" checked="@(Model.Resume.Technologies?.Contains("Docker") == true)" />
+                <label for="docker">Docker</label>
+                <br />
+                <input type="checkbox" name="Resume.Technologies" value="Git" id="git" checked="@(Model.Resume.Technologies?.Contains("Git") == true)" />
+                <label for="git">Git</label>
+                <br />
+                <input type="checkbox" name="Resume.Technologies" value="SQL" id="sql" checked="@(Model.Resume.Technologies?.Contains("SQL") == true)" />
+                <label for="sql">SQL</label>
+                <br />
+                <input type="checkbox" name="Resume.Technologies" value="Linux" id="linux" checked="@(Model.Resume.Technologies?.Contains("Linux") == true)" />
+                <label for="linux">Linux</label>
+            </div>
+        </div>
 
-    </div>
+        <div class="form-group">
+            <label asp-for="Resume.About">О себе:</label>
+            <textarea asp-for="Resume.About" rows="4" placeholder="Расскажите немного о себе..." class="form-textarea"></textarea>
+        </div>
+
+        <button class="form-button" type="submit">Сохранить</button>
+    </form>
 </div>
