@@ -1,0 +1,90 @@
+@page "/EditResume/{id:int}"
+@model EditResumeModel
+
+<div class="resume-detail-page">
+    <a class='resume-back-link' href="/Resumes" asp-route-id="@Model.Resume.id">Назад к резюме</a>
+
+    <div class="resume-detail-card">
+        <h1 class="resume-detail-title">Редактирование резюме</h1>
+        <p>Измени информацию и сохраните новые данные</p>
+
+        <form method="post">
+            <input type="hidden" asp-for="Resume.id" />
+            <div class="form-group">
+                <label asp-for="Resume.First_Name"></label>
+                <input asp-for="Resume.First_Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Resume.Middle_Name"></label>
+                <input asp-for="Resume.Middle_Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Resume.Last_Name"></label>
+                <input asp-for="Resume.Last_Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Resume.Phone"></label>
+                <input asp-for="Resume.Phone" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Resume.Email"></label>
+                <input asp-for="Resume.Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Resume.BirthDate"></label>
+                <input asp-for="Resume.BirthDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Resume.City"></label>
+                <select asp-for("Resume.City") class("form-control")>
+                    <option value="">— выберите город —</option>
+                    <option value="Москва">Москва</option>
+                    <option value="Санкт-Петербург">Санкт-Петербург</option>
+                    <option value="Новосибирск">Новосибирск</option>
+                    <option value="Екатеринбург">Екатеринбург</option>
+                    <option value="Казань">Казань</option>
+                    <option value="Сочи">Сочи</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resume.Speciality"></label>
+                <input asp-for="Resume.Speciality" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for("Resume.StudyFormat")></label>
+                <select asp-for("Resume.StudyFormat") class("form-control")>
+                    <option value="">Выберите формат обучения</option>
+                    <option value("FullTime")>Очное</option>
+                    <option value("PartTime")>Заочное</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for("Resume.Languages")></label>
+                <input asp-for("Resume.Languages") class("form-control") />
+            </div>
+            <div class "form-group">
+                <label asp-for("Resume.MainLanguage")></label>
+                <select asp-for("Resume.MainLanguage") class("form-control")>
+                <option value="">— выберите основной язык —</option>
+                <option value="C#">C#</option>
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+                <option value="Go">Go</option>
+                <option value="Rust">Rust</option>
+                </select>
+            </div>
+            <div class "form-group">
+                <label asp-for("Resume.Technologies")></label>
+                <input asp-for("Resume.Technologies") class("form-control")/>
+            </div>
+            <div class "form-group">
+                <label asp-for("Resume.About")></label>
+                <textarea asp-for("Resume.About") class("form-control")></textarea>
+            </div>
+
+        </form>
+
+    </div>
+</div>
